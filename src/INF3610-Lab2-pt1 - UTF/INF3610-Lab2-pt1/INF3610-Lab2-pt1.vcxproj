@@ -83,10 +83,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);E:\lib\systemc-2.3.1\src</IncludePath>
+    <IncludePath>$(SolutionDir)\..\systemc-2.3.1\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);E:\lib\systemc-2.3.1\src</IncludePath>
+    <LibraryPath>$(SolutionDir)\..\systemc-2.3.1\msvc120\SystemC\Debug;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);E:\lib\systemc-2.3.1\src</IncludePath>
+    <IncludePath>$(SolutionDir)\..\systemc-2.3.1\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);E:\lib\systemc-2.3.1\src</IncludePath>
+    <LibraryPath>$(SolutionDir)\..\systemc-2.3.1\msvc120\SystemC\Debug;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);E:\lib\systemc-2.3.1\src</IncludePath>
@@ -99,7 +101,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_XKEYCHECK_H;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
@@ -136,7 +138,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_XKEYCHECK_H;_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
