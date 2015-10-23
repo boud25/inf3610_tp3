@@ -9,7 +9,7 @@
 #include <systemc.h>
 #include <stdio.h>
 #include "InterfaceRead.h"
-//#include "InterfaceWrite.h"		à décommenter au moment opportun
+#include "InterfaceWrite.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -21,12 +21,9 @@ class Bubble : public sc_module
 {
 	public: 
 		// Ports    
-		/*
-		
-		À compléter
-		
-		*/
-
+		/* À compléter */
+		sc_port<InterfaceRead> readPort;
+		sc_port<InterfaceWrite> writePort;
 	
 		// Constructor
 		Bubble( sc_module_name name );

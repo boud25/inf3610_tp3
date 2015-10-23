@@ -11,13 +11,9 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 Reader::Reader(sc_module_name name)
-/* À compléter */
+: sc_channel(name)
 {
-	/*
-
-	À compléter
-
-	*/
+	/* À compléter */
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,16 +23,11 @@ Reader::Reader(sc_module_name name)
 ///////////////////////////////////////////////////////////////////////////////
 Reader::~Reader()
 {
-	/*
-
-	À compléter
-
-	*/
+	/* À compléter */
 }
 
-	/*
-
-	À compléter
-
-	*/
-
+/* À compléter */
+unsigned int Reader::Read(unsigned int offset)
+{
+	return dataPortRAM->Read(offset);
+}

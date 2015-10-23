@@ -7,7 +7,7 @@
 #include "Bubble.h"
 #include "Reader.h"
 #include "DataRAM.h"
-
+#include "Writer.h"
 #define RAMSIZE 0x400
 
 // Global variables
@@ -24,21 +24,21 @@ int sc_main(int arg_count, char **arg_value)
 	int sim_units = 2; //SC_NS 
 	
 	// Components
-	/*
+	/* À compléter */
+	// Modules instanciation
+	DataRAM ram(sc_module_name("dataram"), "chiffre.hex", RAMSIZE);
+	Bubble bubble(sc_module_name("bubble"));
 
-	À compléter
+	// Channel instanciation
+	Reader reader(sc_module_name("reader"));
+	Writer writer(sc_module_name("writer"));
 
-	*/
-
-
-	
 	// Connexions
-	/*
-
-	À compléter
-
-	*/
-
+	/* À compléter */
+	bubble.readPort(reader);
+	bubble.writePort(writer);
+	reader.dataPortRAM(ram);
+	writer.dataPortRAM(ram);
 
 	// Démarrage de l'application
 	if (!m_bError)
