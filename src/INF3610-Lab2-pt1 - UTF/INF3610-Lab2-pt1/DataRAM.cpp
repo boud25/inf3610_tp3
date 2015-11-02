@@ -73,7 +73,7 @@ void DataRAM::end_of_simulation()
 	
 	// Ouverture du fichier de sortie
 	file = fopen( this->name() , "wb" );
-	
+
 	// Validation de l'ouverture du fichier
 	if (file == 0)
 		cout << "Erreur lors de l'ouverture du fichier de sortie" << endl;

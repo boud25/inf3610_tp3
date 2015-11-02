@@ -28,8 +28,12 @@ public:
 	// Destructor
 	~Writer();
 
+	void Write(unsigned int offset, unsigned int data);
+
 private:
 	/* À compléter */
-	unsigned int Write(unsigned int offset, unsigned int data);
+	// It is a bit useless to remember the name of the module considering
+	// the fact that in this situation there's only one writer.
+	
 };
 

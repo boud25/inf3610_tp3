@@ -27,7 +27,7 @@ Writer::~Writer()
 }
 
 /* À compléter */
-unsigned int Writer::Write(unsigned int offset, unsigned int data)
+void Writer::Write(unsigned int offset, unsigned int data)
 {
-	
+	dataPortRAM->Write(offset, data);
 }

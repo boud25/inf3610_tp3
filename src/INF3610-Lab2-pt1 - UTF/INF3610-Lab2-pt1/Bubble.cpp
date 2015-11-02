@@ -4,6 +4,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include "Bubble.h"
+#include <vector>
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18,6 +19,7 @@ Bubble::Bubble( sc_module_name name )
 	À compléter
 	
 	*/
+	SC_THREAD(thread);
 }
 
 
@@ -43,7 +45,32 @@ void Bubble::thread(void)
 	À compléter
 	
 	*/
+	while (1)
 
+	{
+		// Read amount of elements to sort
+		unsigned int nbElements = readPort->Read(0);
+		
+		// Read those elements
+		unsigned int* elements;
+		elements = new unsigned int[nbElements];
+		for (unsigned int i = 0; i < nbElements; i++)
+		{
+			elements[i] = readPort->Read((i + 1) * 4);
+		}
+
+		// Sort those value
+		bubbleSort(elements, nbElements);
+
+		// Write them in mermory
+		for (unsigned int i = 0; i < nbElements; i++)
+		{
+			writePort->Write((i + 1) * 4, elements[i]);
+		}
+
+		sc_stop();
+		wait();
+	}
 }
 
 
