@@ -6,6 +6,7 @@
 #include <systemc.h>
 #include "Bubble.h"
 #include "Reader.h"
+#include "Writer.h"
 #include "DataRAM.h"
 
 #define RAMSIZE 0x400
@@ -34,23 +35,30 @@ int sc_main(int arg_count, char **arg_value)
 
 	// Channel instatiation
 	Reader reader(sc_module_name("reader"));
+	Writer writer(sc_module_name("writer"));
 
 	// Signal
-	sc_signal<bool> requestReader, ackReader;
-	sc_signal<unsigned int> dataReader, addressReader;
+	sc_signal<bool> requestReader, requestWriter, ack;
+	sc_signal<unsigned int> data, address;
 	sc_clock clock("clock");
 
 	// Connexions
 	bubble.clk(clock);
 	reader.clk(clock);
-	bubble.ack(ackReader);
-	reader.ack(ackReader);
-	bubble.data(dataReader);
-	reader.data(dataReader);
-	bubble.address(addressReader);
-	reader.address(addressReader);
+	writer.clk(clock);
+	bubble.ack(ack);
+	reader.ack(ack);
+	writer.ack(ack);
+	bubble.data(data);
+	reader.data(data);
+	writer.data(data);
+	bubble.address(address);
+	reader.address(address);
+	writer.address(address);
 	bubble.requestRead(requestReader);
 	reader.request(requestReader);
+	bubble.requestWrite(requestWriter);
+	writer.request(requestWriter);
 
 	reader.dataPortRAM(ram);
 

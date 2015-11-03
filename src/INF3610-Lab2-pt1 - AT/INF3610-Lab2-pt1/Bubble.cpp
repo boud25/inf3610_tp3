@@ -66,8 +66,17 @@ void Bubble::thread(void)
 		// Sort those value
 		bubbleSort(elements, nbElements);
 
-		delete elements;
+		// Write the sorted elements
+		for (unsigned int i = 0; i < nbElements; i++)
+		{
+			writeData(i, elements[i]);
+		}
+
+		delete []elements;
 		elements = nullptr;
+
+		// Stopping the app
+		sc_stop();
 	}
 	
 
@@ -80,7 +89,7 @@ void Bubble::thread(void)
 ///////////////////////////////////////////////////////////////////////////////
 unsigned int Bubble::readData(unsigned int offset)
 {
-	// Get the amount of elements to sort
+	// Synchonize and read the data
 	address.write(offset * 4);
 	requestRead.write(true);
 	do
@@ -91,6 +100,27 @@ unsigned int Bubble::readData(unsigned int offset)
 	requestRead.write(false);
 
 	return data.read();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//	writeData
+//
+///////////////////////////////////////////////////////////////////////////////
+void Bubble::writeData(unsigned int offset, unsigned int d)
+{
+	// Synchonize and write the data
+	address.write(offset * 4);
+	data.write(d);
+	requestWrite.write(true);
+	do
+	{
+		wait(clk.posedge_event());
+	} while (!ack.read());
+
+	requestWrite.write(false);
+
+	return;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -69,9 +69,10 @@ void Bubble::thread(void)
 		}
 
 		// Free memory
-		delete elements;
+		delete []elements;
 		elements = nullptr;
 
+		// Stopping the app
 		sc_stop();
 		wait();
 	}

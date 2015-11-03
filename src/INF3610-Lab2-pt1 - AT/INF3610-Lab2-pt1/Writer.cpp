@@ -1,22 +1,22 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-//	Reader.cpp
+//	Writer.cpp
 //
 ///////////////////////////////////////////////////////////////////////////////
-#include "Reader.h"
+#include "Writer.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 //	Constructor
 //
 ///////////////////////////////////////////////////////////////////////////////
-Reader::Reader(sc_module_name name)
+Writer::Writer(sc_module_name name)
 	: sc_channel(name)
 {
 	/*
-	
+
 	À compléter
-	
+
 	*/
 	SC_THREAD(thread);
 }
@@ -26,12 +26,12 @@ Reader::Reader(sc_module_name name)
 //	Destructor
 //
 ///////////////////////////////////////////////////////////////////////////////
-Reader::~Reader()
+Writer::~Writer()
 {
 	/*
-	
+
 	À compléter
-	
+
 	*/
 }
 
@@ -40,26 +40,29 @@ Reader::~Reader()
 //	Thread
 //
 ///////////////////////////////////////////////////////////////////////////////
-void Reader::thread(void)
+void Writer::thread(void)
 {
 	/*
-	
+
 	À compléter
-	
+
 	*/
-	// Synchronize to gather the reading address 
 	while (1)
 	{
+		// Synchronize with bubble
 		do
 		{
 			wait(clk.posedge_event());
 		} while (!request.read());
 		ack.write(false);
+
+		// Gather the address and the data to write
 		unsigned int adrs = address.read();
+		unsigned int d = data.read();
 
-		// Write the corresponding data
-		data.write(dataPortRAM->Read(adrs));
-
+		// Write the data in memory
+		dataPortRAM->Write(adrs, d);
+		
 		// Ack bubble that the request was served
 		ack.write(true);
 	}
