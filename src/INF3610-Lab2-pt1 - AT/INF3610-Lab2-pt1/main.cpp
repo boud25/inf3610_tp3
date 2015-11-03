@@ -28,7 +28,31 @@ int sc_main(int arg_count, char **arg_value)
 	À compléter
 	
 	*/
+	// Module instanciation
+	DataRAM ram(sc_module_name("dataram"), "chiffre.hex", RAMSIZE);
+	Bubble bubble(sc_module_name("bubble"));
 
+	// Channel instatiation
+	Reader reader(sc_module_name("reader"));
+
+	// Signal
+	sc_signal<bool> requestReader, ackReader;
+	sc_signal<unsigned int> dataReader, addressReader;
+	sc_clock clock("clock");
+
+	// Connexions
+	bubble.clk(clock);
+	reader.clk(clock);
+	bubble.ack(ackReader);
+	reader.ack(ackReader);
+	bubble.data(dataReader);
+	reader.data(dataReader);
+	bubble.address(addressReader);
+	reader.address(addressReader);
+	bubble.requestRead(requestReader);
+	reader.request(requestReader);
+
+	reader.dataPortRAM(ram);
 
 	// Démarrage de l'application
 	if (!m_bError)

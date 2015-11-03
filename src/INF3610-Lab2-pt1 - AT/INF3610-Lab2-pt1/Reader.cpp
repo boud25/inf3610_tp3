@@ -18,8 +18,7 @@ Reader::Reader(sc_module_name name)
 	À compléter
 	
 	*/
-	SC_METHOD(thread);
-	sensitive << clk;
+	SC_THREAD(thread);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -49,17 +48,18 @@ void Reader::thread(void)
 	
 	*/
 	// Synchronize to gather the reading address 
-	do
+	while (1)
 	{
-		wait(request.posedge_event());
-	} while (!request.read());
+		do
+		{
+			wait(clk.posedge_event());
+		} while (!request.read());
+		ack.write(false);
+		unsigned int adrs = address.read();
 
-	unsigned int adrs = address.read();
+		// Write the corresponding data
+		data.write(dataPortRAM->Read(adrs));
 
-	// Write the corresponding data
-	data.write(dataPortRAM->Read(adrs));
-
-	ack.write(true);
-
-	return;
+		ack.write(true);
+	}
 }

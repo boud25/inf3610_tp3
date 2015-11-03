@@ -1,25 +1,5 @@
-﻿Build started 10/23/2015 10:15:44 AM.
-     1>Project "C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\INF3610-Lab2-pt1\INF3610-Lab2-pt1.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /D _XKEYCHECK_H /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt /vmg assert.c
-         assert.c
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /D _XKEYCHECK_H /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /vmg Bubble.cpp DataRAM.cpp main.cpp RAM.cpp Reader.cpp
-         Reader.cpp
-         RAM.cpp
-         main.cpp
-         DataRAM.cpp
-         Bubble.cpp
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\Debug\INF3610-Lab2-pt1-AT.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\lib\systemc-2.3.1\msvc120\SystemC\Debug" SystemC.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\Debug\INF3610-Lab2-pt1-AT.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\Debug\INF3610-Lab2-pt1-AT.lib" /MACHINE:X86 Debug\assert.obj
-         Debug\Bubble.obj
-         Debug\DataRAM.obj
-         Debug\main.obj
-         Debug\RAM.obj
-         Debug\Reader.obj
-         INF3610-Lab2-pt1.vcxproj -> C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\Debug\INF3610-Lab2-pt1-AT.exe
-     1>Done Building Project "C:\Users\Maxime\Documents\inf3610-lab2\src\INF3610-Lab2-pt1 - AT\INF3610-Lab2-pt1\INF3610-Lab2-pt1.vcxproj" (Build target(s)).
+﻿La génération a démarré 2015-11-03 09:14:08.
 
-Build succeeded.
+La génération a réussi.
 
-Time Elapsed 00:00:05.84
+Temps écoulé 00:00:00.04

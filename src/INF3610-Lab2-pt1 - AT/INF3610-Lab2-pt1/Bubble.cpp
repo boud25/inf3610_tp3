@@ -19,8 +19,7 @@ Bubble::Bubble( sc_module_name name )
 	À compléter
 	
 	*/
-	SC_METHOD(thread);
-	sensitive << clk;
+	SC_THREAD(thread);
 }
 
 
@@ -51,11 +50,26 @@ void Bubble::thread(void)
 	À compléter
 	
 	*/
+	while (1)
+	{
+		// Read the amount of elements to read
+		unsigned int nbElements = readData(0);
 
-	// Read the amount of elements to read
-	unsigned int nbElements = readData(0);
+		// Read those elements
+		unsigned int* elements;
+		elements = new unsigned int[nbElements];
+		for (unsigned int i = 0; i < nbElements; i++)
+		{
+			elements[i] = readData(i+1);
+		}
 
+		// Sort those value
+		bubbleSort(elements, nbElements);
 
+		delete elements;
+		elements = nullptr;
+	}
+	
 
 }
 
@@ -71,7 +85,7 @@ unsigned int Bubble::readData(unsigned int offset)
 	requestRead.write(true);
 	do
 	{
-		wait(ack.posedge_event());
+		wait(clk.posedge_event());
 	} while (!ack.read());
 
 	requestRead.write(false);

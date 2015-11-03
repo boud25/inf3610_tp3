@@ -68,6 +68,10 @@ void Bubble::thread(void)
 			writePort->Write((i + 1) * 4, elements[i]);
 		}
 
+		// Free memory
+		delete elements;
+		elements = nullptr;
+
 		sc_stop();
 		wait();
 	}

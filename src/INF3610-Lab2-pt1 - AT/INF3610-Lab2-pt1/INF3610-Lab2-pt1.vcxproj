@@ -25,6 +25,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RAM.cpp" />
     <ClCompile Include="Reader.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bubble.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="LMBIF.h" />
     <ClInclude Include="RAM.h" />
     <ClInclude Include="Reader.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0C92E0B2-B497-4AEE-9A67-2A461452E7EB}</ProjectGuid>
