@@ -19,6 +19,8 @@ Bubble::Bubble( sc_module_name name )
 	À compléter
 	
 	*/
+	SC_METHOD(thread);
+	sensitive << clk;
 }
 
 
@@ -50,8 +52,32 @@ void Bubble::thread(void)
 	
 	*/
 
+	// Read the amount of elements to read
+	unsigned int nbElements = readData(0);
+
+
+
 }
 
+///////////////////////////////////////////////////////////////////////////////
+//
+//	readData
+//
+///////////////////////////////////////////////////////////////////////////////
+unsigned int Bubble::readData(unsigned int offset)
+{
+	// Get the amount of elements to sort
+	address.write(offset * 4);
+	requestRead.write(true);
+	do
+	{
+		wait(ack.posedge_event());
+	} while (!ack.read());
+
+	requestRead.write(false);
+
+	return data.read();
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 //
