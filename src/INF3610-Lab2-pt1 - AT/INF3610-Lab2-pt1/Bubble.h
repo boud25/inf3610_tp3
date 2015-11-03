@@ -29,7 +29,7 @@ class Bubble : public sc_module
 		sc_inout<unsigned int> data;	// data that was read or to be writen
 		sc_out<bool> requestRead;		// signal to read --> sent to Reader
 		sc_out<bool> requestWrite;		// signal to write --> sent to Writer
-		sc_in<bool> ack;				// signal of the ack --> from Slave (Reader or Writer)
+		sc_in<bool> ack;			// signal of the ack --> from Reader or Writer
 	
 		// Constructor
 		Bubble( sc_module_name name );

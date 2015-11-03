@@ -54,11 +54,9 @@ void Reader::thread(void)
 		{
 			wait(clk.posedge_event());
 		} while (!request.read());
-		ack.write(false);
-		unsigned int adrs = address.read();
 
 		// Write the corresponding data
-		data.write(dataPortRAM->Read(adrs));
+		data.write(dataPortRAM->Read(address.read()));
 
 		// Ack bubble that the request was served
 		ack.write(true);

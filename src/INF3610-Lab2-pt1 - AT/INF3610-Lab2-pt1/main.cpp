@@ -38,8 +38,9 @@ int sc_main(int arg_count, char **arg_value)
 	Writer writer(sc_module_name("writer"));
 
 	// Signal
-	sc_signal<bool> requestReader, requestWriter, ack;
-	sc_signal<unsigned int> data, address;
+	sc_signal<bool> requestReader, requestWriter;
+	sc_signal<bool, SC_MANY_WRITERS> ack;
+	sc_signal<unsigned int, SC_MANY_WRITERS> data, address;
 	sc_clock clock("clock");
 
 	// Connexions
@@ -61,6 +62,7 @@ int sc_main(int arg_count, char **arg_value)
 	writer.request(requestWriter);
 
 	reader.dataPortRAM(ram);
+	writer.dataPortRAM(ram);
 
 	// Démarrage de l'application
 	if (!m_bError)

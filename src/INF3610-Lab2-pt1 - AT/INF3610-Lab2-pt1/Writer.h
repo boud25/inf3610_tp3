@@ -44,7 +44,7 @@ private:
 	À compléter
 
 	*/
-	SC_HAS_PROCESS(Reader);
+	SC_HAS_PROCESS(Writer);
 
 	void thread(void);
 };
