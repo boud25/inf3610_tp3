@@ -47,5 +47,8 @@ class Reader : public sc_module
 		SC_HAS_PROCESS(Reader);
 		
 		void thread(void);
+
+		// Synchro boolean
+		bool isFirstTimeInLoop = true;
 };
 

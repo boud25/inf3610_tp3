@@ -53,7 +53,15 @@ void Reader::thread(void)
 		do
 		{
 			wait(clk.posedge_event());
+			if (isFirstTimeInLoop)
+			{
+				ack.write(false);
+				isFirstTimeInLoop = false;
+			}
+			
 		} while (!request.read());
+
+		isFirstTimeInLoop = true;
 
 		// Write the corresponding data
 		data.write(dataPortRAM->Read(address.read()));

@@ -90,16 +90,19 @@ void Bubble::thread(void)
 unsigned int Bubble::readData(unsigned int offset)
 {
 	// Synchonize and read the data
-	address.write(offset * 4);
-	requestRead.write(true);
+	
 	do
 	{
 		wait(clk.posedge_event());
+		address.write(offset * 4);
+		requestRead.write(true);
+		wait(clk.posedge_event());
 	} while (!ack.read());
 
+	unsigned int tmp = data.read();
 	requestRead.write(false);
 
-	return data.read();
+	return tmp;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -110,11 +113,12 @@ unsigned int Bubble::readData(unsigned int offset)
 void Bubble::writeData(unsigned int offset, unsigned int d)
 {
 	// Synchonize and write the data
-	address.write(offset * 4);
-	data.write(d);
-	requestWrite.write(true);
 	do
 	{
+		wait(clk.posedge_event());
+		address.write(offset * 4);
+		data.write(d);
+		requestWrite.write(true);
 		wait(clk.posedge_event());
 	} while (!ack.read());
 

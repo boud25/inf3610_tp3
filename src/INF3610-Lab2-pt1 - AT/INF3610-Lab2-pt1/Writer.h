@@ -47,5 +47,8 @@ private:
 	SC_HAS_PROCESS(Writer);
 
 	void thread(void);
+
+	// Synchro boolean
+	bool isFirstTimeInLoop = true;
 };
 

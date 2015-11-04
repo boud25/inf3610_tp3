@@ -53,8 +53,14 @@ void Writer::thread(void)
 		do
 		{
 			wait(clk.posedge_event());
+			if (isFirstTimeInLoop)
+			{
+				ack.write(false);
+				isFirstTimeInLoop = false;
+			}
 		} while (!request.read());
-		ack.write(false);
+
+		isFirstTimeInLoop = true;
 
 		// Gather the address and the data to write
 		unsigned int adrs = address.read();
