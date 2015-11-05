@@ -1,0 +1,14 @@
+Question 1 - Quel est l’intérêt d’utiliser les modules writer et reader au lieu d’interfacer directement le module bubble au module dataRam ?
+
+L'intérêt est multiple. Premièrement, ces modules permettent de simplifier le fonctionnement du logiciel en découplant les différentes entitées du code. Les modules bubble et dataRam n'ont aucune idée du fonctionnement des modules reader et writer, ils connaissent seulement les interfaces. Ces interfaces permettent donc de cacher l'implémentation à l'utilisateur, celui-ci sait seulement qu'il a accès à certaines fonctions ce qui permet donc de simplifier sa compréhension. 
+
+Puisque les modules bubble et dataRam se retrouvent complètement séparés, une modification à l'un ne nécessite pas de modifier l'autre. Il suffit de suivre le standard définis par l'interface des modules lecteur et écrivain puis le fonctionnement sera le même. Ceci rend donc la modification des modules bubble et dataRam plus simple.
+
+
+Question 2 - Aurait-il été possible d’implémenter la communication handshake du channel Reader dans le modèle AT à l’aide d’une sc_method plutôt que d’un sc_thread ? Expliquez votre réponse.
+
+Un SC_THREAD peut être suspendu et réactivé avec un wait. Il ne peut pas être terminé.
+
+Un SC_METHOD se termine toujours, il n'y a pas de wait, de boucle infinie ou de suspension d'exécution. Il s'agit d'une routine qui s'exécute en entier lorsqu'un changement sur la liste de sensibilité survient.
+
+La communication handshaking du modèle AT nécessite obligatoirement l'utilisation d'un SC_THREAD puisque nous utilisons une boucle infinie afin d'attendre une requête et un appel à wait pour attendre le prochain tick de clock.
